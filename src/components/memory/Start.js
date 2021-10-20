@@ -55,7 +55,7 @@ const Start = ({ navigation }) => {
           </Text>
           <Text style={styles.para}>
             If you find the easy option too easy, well why not try medium or if
-            you’re really up to it the hard option!
+            you’re really up to it the hard option!!!
           </Text>
           <Text style={styles.endPara}>Good luck time travellers!</Text>
         </View>
