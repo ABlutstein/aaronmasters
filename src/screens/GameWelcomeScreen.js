@@ -4,6 +4,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import Start from "../components/memory/Start";
 import Game from "../components/memory/CardApp";
 import Header from "../components/Header";
+import colors from "../config/colors";
 
 const Stack = createStackNavigator();
 
@@ -18,12 +19,12 @@ export default function WelcomeScreen() {
       <Stack.Screen
         options={{
           headerStyle: {
-            backgroundColor: "yellow",
+            backgroundColor: colors.primaryYellow,
           },
           headerTitleStyle: {
             fontWeight: "bold",
           },
-          headerTintColor: "green",
+          headerTintColor: colors.primaryGreen,
           headerBackTitleVisible: false,
         }}
         name="Babbit's memory game"

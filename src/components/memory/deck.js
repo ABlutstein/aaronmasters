@@ -1,7 +1,7 @@
 function shuffle(array, level) {
   let selectedLevel = level;
-  let easyCards = [...array].slice(0, 16);
-  let mediumCards = [...array].slice(0, 20);
+  let easyCards = [...array].slice(0, 12);
+  let mediumCards = [...array].slice(0, 16);
   let hardCards = [...array];
 
   if (selectedLevel === "easy") {

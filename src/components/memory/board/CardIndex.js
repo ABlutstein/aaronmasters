@@ -123,15 +123,15 @@ const styles = StyleSheet.create({
     borderStyle: "solid",
     borderWidth: 1,
     backgroundColor: "#0000",
-    width: 100,
-    height: 160,
+    width: 80,
+    height: 140,
     borderRadius: 10,
   },
 
   back: {
     zIndex: 2,
-    width: 70,
-    height: 150,
+    width: 50,
+    height: 130,
     resizeMode: "contain",
     // transform: [{ rotateY: "0deg" }],
     backfaceVisibility: "hidden",
@@ -142,8 +142,8 @@ const styles = StyleSheet.create({
   },
 
   front: {
-    width: 100,
-    height: 160,
+    width: 80,
+    height: 140,
     // transform: [{ rotateY: "180deg" }],
     backfaceVisibility: "hidden",
     // position: "absolute",

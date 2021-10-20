@@ -16,6 +16,7 @@ import {
 import MediaInfo from "./MediaInfo";
 import SearchVideo from "./Search";
 import * as GlobalConstants from "../../config/Settings";
+import colors from "../../config/colors";
 
 const SCREEN_HEIGHT = Dimensions.get("window").height;
 let pageURL = "";
@@ -160,10 +161,8 @@ const VideoList = () => {
   };
 
   const renderItem = ({ item, index }) => {
-    const backgroundColor =
-      item.id === selectedId ? "rgb(197, 0, 0)" : "rgb(240, 240, 240)";
-    const color =
-      item.id === selectedId ? "rgb(240, 240, 240)" : "rgb(30, 30, 30)";
+    const backgroundColor = item.id === selectedId ? "orange" : "green";
+    const color = item.id === selectedId ? "green" : "yellow";
     const borderColor = "rgb(240, 240, 240)";
     const borderBottomColor = "rgb(210, 210, 210)";
 
@@ -266,6 +265,7 @@ const styles = StyleSheet.create({
     fontSize: 26,
     color: "green",
     paddingTop: 5,
+    backgroundColor: colors.background,
   },
   image: {
     width: "100%",
@@ -277,7 +277,7 @@ const styles = StyleSheet.create({
     width: 60,
     height: 60,
     bottom: 150,
-    tintColor: "green",
+    tintColor: colors.primaryGreen,
   },
 
   videolist: {
@@ -308,7 +308,7 @@ const styles = StyleSheet.create({
   },
   searchlist: {
     flex: 1,
-    backgroundColor: "rgb(240, 240, 240)",
+    backgroundColor: colors.background,
     padding: 10,
     zIndex: 200,
     width: "100%",

@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { FlatList, View, StyleSheet } from "react-native";
 import PostCard from "../components/babbitStoriesPosts/PostCard";
-import { vars, colors } from "../utils";
+import { vars } from "../utils";
+import colors from "../config/colors";
 import stories from "../stories";
 
 function BabbitStories(props) {
@@ -16,7 +17,6 @@ function BabbitStories(props) {
           setTimeout(() => setRefreshing(false), 2000);
         }}
         {...{ refreshing }}
-        // and it ends right above this line
         data={stories}
         renderItem={({ item }) => (
           <PostCard {...item} navigation={props.navigation} />
@@ -32,7 +32,7 @@ function BabbitStories(props) {
 const styles = StyleSheet.create({
   container: {
     height: "100%",
-    backgroundColor: colors.secondary,
+    backgroundColor: colors.secondaryTwo,
   },
 
   list: {

@@ -38,7 +38,7 @@ const stories = [
   {
     title: "Hooray for Shakespeare!",
     author: {
-      name: "Shakespeare",
+      name: "William",
       image: require("../assets/images/authors/ShakespeareHead.png"),
     },
     content:
@@ -80,7 +80,7 @@ const stories = [
       "As well as the World Wide Web, the Internet is used for such applications as email, file sharing, online chat, phone and video calls, online gaming and more.\n\n" +
       "English physicist Sir Tim Berners-Lee is regarded as having invented the World Wide Web in 1989. Since then he has continued the development of web standards and other web related projects.\n\n",
     author: {
-      name: "Berners-Lee",
+      name: "Tim",
       image: require("../assets/images/authors/Berners.png"),
     },
     readTime: 4,

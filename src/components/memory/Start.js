@@ -5,9 +5,9 @@ import {
   ScrollView,
   Text,
   TouchableOpacity,
-  ImageBackground,
 } from "react-native";
 import React from "react";
+import colors from "../../config/colors";
 
 const Start = ({ navigation }) => {
   return (
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
     display: "flex",
     alignItems: "center",
     alignContent: "space-between",
-    backgroundColor: "honeydew",
+    backgroundColor: colors.background,
     height: "100%",
     width: "100%",
     paddingBottom: 20,

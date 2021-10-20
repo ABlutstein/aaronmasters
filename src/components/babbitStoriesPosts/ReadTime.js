@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
-import { vars, colors } from "../../utils";
+import { vars } from "../../utils";
+import colors from "../../config/colors";
 
 function ReadTime({ time }) {
   return (
@@ -17,6 +18,7 @@ const styles = StyleSheet.create({
   label: {
     flexDirection: "row",
     alignItems: "center",
+    padding: 5,
   },
 
   dot: {
@@ -29,7 +31,7 @@ const styles = StyleSheet.create({
 
   text: {
     color: colors.primaryLight,
-    fontSize: 18,
+    fontSize: 15,
     fontFamily: "EnglishFont",
   },
 });

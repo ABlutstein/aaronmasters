@@ -1,7 +1,7 @@
 import React from "react";
 import { StatusBar } from "expo-status-bar";
-import { View, Image, StyleSheet, TouchableOpacity } from "react-native";
-import { vars, colors } from "../utils";
+import { View, Image, StyleSheet } from "react-native";
+import { vars } from "../utils";
 
 function Header() {
   return (
@@ -11,16 +11,6 @@ function Header() {
         source={require("../../assets/icons/Babbitlogofinala.png")}
       />
       <StatusBar backgroundColor="transparent" />
-
-      <TouchableOpacity
-        style={{ marginRight: 15 }}
-        onPress={() => alert("BUTTON NOT USED YET!")}
-      >
-        <Image
-          source={require("../../assets/icons/menu.png")}
-          style={styles.icon}
-        />
-      </TouchableOpacity>
     </View>
   );
 }
@@ -31,7 +21,7 @@ const styles = StyleSheet.create({
   frame: {
     margin: -40,
     paddingVertical: gap.s - gap.xs * 2,
-    paddingTop: gap.m,
+    paddingTop: gap.xs,
     paddingBottom: gap.xs,
     paddingHorizontal: gap.s,
     flexDirection: "row",
@@ -39,22 +29,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
 
-  title: {
-    color: colors.primary,
-    fontSize: 40,
-    fontFamily: "CrimsonBold",
-  },
-
-  icon: {
-    width: 40,
-    height: 30,
-    marginRight: 40,
-  },
-
   logo: {
     width: 300,
     resizeMode: "contain",
-    bottom: 10,
+    bottom: -15,
     margin: 5,
     marginLeft: 75,
   },

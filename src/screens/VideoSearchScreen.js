@@ -4,6 +4,7 @@ import SafeAreaView from "react-native-safe-area-view";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { enableScreens } from "react-native-screens";
 import VideoList from "../components/videoSearch/VideoList";
+import colors from "../config/colors";
 
 enableScreens(); // this helps screens load faster in background
 const App = () => {
@@ -19,7 +20,7 @@ const App = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "yellow",
+    backgroundColor: colors.primaryYellow,
     alignItems: "center",
     justifyContent: "center",
   },

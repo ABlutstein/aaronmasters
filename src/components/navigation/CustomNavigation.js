@@ -3,7 +3,9 @@ import { createStackNavigator } from "@react-navigation/stack";
 import Header from "../Header";
 import VideoSearchScreen from "../../screens/VideoSearchScreen";
 import GameWelcomeScreen from "../../screens/GameWelcomeScreen";
+import DiaryScreen from "../../screens/DiaryScreen";
 import { Article, BabbitStories } from "../../index";
+import colors from "../../config/colors";
 
 const Stack = createStackNavigator();
 
@@ -20,7 +22,7 @@ const FirstScreenNavigator = () => {
       <Stack.Screen
         options={{
           headerStyle: {
-            backgroundColor: "yellow",
+            backgroundColor: colors.primaryYellow,
           },
           headerTitleStyle: {
             fontWeight: "bold",
@@ -64,3 +66,17 @@ const ThirdScreenNavigator = () => {
 };
 
 export { ThirdScreenNavigator };
+
+const FourthScreenNavigator = () => {
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
+      <Stack.Screen name="DiaryPage" component={DiaryScreen} />
+    </Stack.Navigator>
+  );
+};
+
+export { FourthScreenNavigator };

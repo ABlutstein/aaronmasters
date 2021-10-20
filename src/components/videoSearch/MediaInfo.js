@@ -4,7 +4,6 @@ import {
   Text,
   View,
   Platform,
-  Dimensions,
   TouchableOpacity,
   LayoutAnimation,
 } from "react-native";
@@ -14,16 +13,6 @@ import {
   faChevronCircleUp,
   faChevronCircleDown,
 } from "@fortawesome/free-solid-svg-icons";
-import * as ScreenOrientation from "expo-screen-orientation";
-
-const SCREEN_HEIGHT = Dimensions.get("window").height;
-const SCREEN_WIDTH = Dimensions.get("window").width;
-const topPortrait =
-  (SCREEN_HEIGHT > SCREEN_WIDTH ? SCREEN_HEIGHT : SCREEN_WIDTH) *
-  (Platform.OS == "android" ? 0.7 : 0.738);
-const topLandscape =
-  (SCREEN_HEIGHT > SCREEN_WIDTH ? SCREEN_WIDTH : SCREEN_HEIGHT) * 0.58;
-const topLandscapeWeb = SCREEN_HEIGHT * 0.81;
 
 const MediaInfo = ({
   scroll,
@@ -31,31 +20,11 @@ const MediaInfo = ({
   selectedId,
   selectedVideoTitle,
   selectedVideoDesc,
-  selectedVideoChannel,
 }) => {
-  const DEVICE_ORIENTATION = Object.freeze({
-    PORTRAIT: 0,
-    LANDSCAPE: 1,
-  });
-
   const [showPreview, setShowPreview] = useState(false);
-  const [orientation, setOrientation] = useState(0);
   let videoSrc = `https://www.youtube.com/embed/${selectedId}`;
 
   useEffect(() => {}, [showPreview]);
-
-  const setOrientSize = async () => {
-    let actualOrientation = await ScreenOrientation.getOrientationAsync();
-    if (
-      actualOrientation === ScreenOrientation.Orientation.LANDSCAPE_LEFT ||
-      actualOrientation === ScreenOrientation.Orientation.LANDSCAPE_RIGHT
-    ) {
-      setOrientation(DEVICE_ORIENTATION.LANDSCAPE);
-    } else {
-      setOrientation(DEVICE_ORIENTATION.PORTRAIT);
-    }
-  };
-  ScreenOrientation.addOrientationChangeListener(setOrientSize);
 
   const showVideoPreview = () => {
     if (!showPreview) {
@@ -66,17 +35,7 @@ const MediaInfo = ({
   };
 
   return (
-    <View
-      style={
-        showPreview
-          ? orientation === DEVICE_ORIENTATION.PORTRAIT
-            ? styles.displayvideo
-            : styles.displayvideoLandscape
-          : orientation === DEVICE_ORIENTATION.PORTRAIT
-          ? styles.hidevideo
-          : styles.hidevideoLandscape
-      }
-    >
+    <View style={showPreview ? styles.displayvideo : styles.hidevideo}>
       <View style={{ flex: 1, backgroundColor: "transparent" }}>
         <View style={styles.toucharea}>
           <TouchableOpacity
@@ -96,53 +55,28 @@ const MediaInfo = ({
           <iframe src={videoSrc} height={"100%"} style={{ borderWidth: 0 }} />
         )}
       </View>
-      {orientation === DEVICE_ORIENTATION.PORTRAIT ? (
-        <View style={styles.bottom}>
-          <Text style={styles.bold}>
-            Title:{" "}
-            <Text style={styles.frame}>
-              {selectedVideoTitle != ""
-                ? selectedVideoTitle.length > 42
-                  ? selectedVideoTitle.substring(0, 42) + "..."
-                  : selectedVideoTitle
-                : "No title"}
-            </Text>
+      <View style={styles.bottom}>
+        <Text style={styles.bold}>
+          Title:{" "}
+          <Text style={styles.frame}>
+            {selectedVideoTitle != ""
+              ? selectedVideoTitle.length > 42
+                ? selectedVideoTitle.substring(0, 42) + "..."
+                : selectedVideoTitle
+              : "No title"}
           </Text>
-          <Text style={styles.bold}>
-            Description:{" "}
-            <Text style={styles.frame}>
-              {selectedVideoDesc != ""
-                ? selectedVideoDesc.length > 36
-                  ? selectedVideoDesc.substring(0, 36) + "..."
-                  : selectedVideoDesc
-                : "No description"}
-            </Text>
+        </Text>
+        <Text style={styles.bold}>
+          Description:{" "}
+          <Text style={styles.frame}>
+            {selectedVideoDesc != ""
+              ? selectedVideoDesc.length > 36
+                ? selectedVideoDesc.substring(0, 36) + "..."
+                : selectedVideoDesc
+              : "No description"}
           </Text>
-        </View>
-      ) : (
-        <View style={styles.bottom}>
-          <Text style={styles.bold}>
-            Title:{" "}
-            <Text style={styles.frame}>
-              {selectedVideoTitle != ""
-                ? selectedVideoTitle.length > 80
-                  ? selectedVideoTitle.substring(0, 80) + "..."
-                  : selectedVideoTitle
-                : "No title"}
-            </Text>
-          </Text>
-          <Text style={styles.bold}>
-            Description:{" "}
-            <Text style={styles.frame}>
-              {selectedVideoDesc != ""
-                ? selectedVideoDesc.length > 79
-                  ? selectedVideoDesc.substring(0, 79) + "..."
-                  : selectedVideoDesc
-                : "No description"}
-            </Text>
-          </Text>
-        </View>
-      )}
+        </Text>
+      </View>
     </View>
   );
 };
@@ -153,25 +87,12 @@ const styles = StyleSheet.create({
     width: "100%",
     zIndex: 200,
   },
-  displayvideoLandscape: {
-    flex: 4,
-    width: "100%",
-    zIndex: 200,
-  },
   hidevideo: {
     flex: 1,
     width: "100%",
     zIndex: 200,
     position: "absolute",
     bottom: 0,
-    backgroundColor: "transparent",
-  },
-  hidevideoLandscape: {
-    flex: 1,
-    width: "100%",
-    zIndex: 200,
-    position: "absolute",
-    top: topLandscape,
     backgroundColor: "transparent",
   },
   bottom: {
@@ -202,7 +123,7 @@ const styles = StyleSheet.create({
     width: "100%",
     backgroundColor: "yellow",
     minHeight: 30,
-    opacity: 0.7,
+
     justifyContent: "center",
     alignItems: "center",
     shadowColor: "rgb(10, 10, 10)",

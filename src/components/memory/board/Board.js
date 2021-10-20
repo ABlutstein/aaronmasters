@@ -8,7 +8,6 @@ export default function Board({
   cards,
   flipped,
   handleClick,
-  level,
   // navigation,
 }) {
   return (
@@ -40,6 +39,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     alignContent: "space-between",
-    width: 500,
+    width: 400,
   },
 });

@@ -1,7 +1,8 @@
 import React from "react";
 import { View, Text, Image, Pressable, StyleSheet } from "react-native";
 import { Author, ReadTime } from "./AuthorIndex";
-import { colors, vars } from "../../utils";
+import { vars } from "../../utils";
+import colors from "../../config/colors";
 
 function PostCard({ navigation, ...props }) {
   const openArticle = () => {
@@ -37,7 +38,7 @@ const bsw = 100;
 const styles = StyleSheet.create({
   container: {
     position: "relative",
-    backgroundColor: "#fff",
+    backgroundColor: colors.background,
     justifyContent: "center",
     padding: gap.s - 2,
     marginBottom: gap.s,
@@ -53,7 +54,7 @@ const styles = StyleSheet.create({
 
   innerFrame: {
     padding: gap.s - 4,
-    backgroundColor: colors.white,
+    backgroundColor: colors.background,
     flexDirection: "row",
     position: "relative",
   },

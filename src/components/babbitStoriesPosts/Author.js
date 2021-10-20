@@ -1,6 +1,7 @@
 import React from "react";
 import { Text, View, Image, StyleSheet } from "react-native";
-import { vars, colors } from "../../utils";
+import { vars } from "../../utils";
+import colors from "../../config/colors";
 
 function Author({ name, image, style }) {
   return (
@@ -12,7 +13,6 @@ function Author({ name, image, style }) {
 }
 
 const { gap } = vars;
-const imgsz = gap.s + gap.xs * 2;
 
 const styles = StyleSheet.create({
   frame: {
@@ -21,17 +21,17 @@ const styles = StyleSheet.create({
   },
 
   image: {
-    width: 50,
-    height: 50,
+    width: 40,
+    height: 40,
     borderRadius: 100,
     marginRight: gap.xs + 3,
   },
 
   text: {
-    color: colors.primary,
+    color: colors.primaryLight,
     fontSize: gap.s,
     fontFamily: "EnglishFont",
-    fontSize: 22,
+    fontSize: 18,
   },
 });
 

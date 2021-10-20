@@ -1,10 +1,3 @@
-const colors = {
-  primary: "#324558",
-  primaryLight: "#99a3ab",
-  secondary: "#f0f4f4",
-  white: "#fff",
-};
-
 const vars = {
   gap: {
     xs: 5,
@@ -15,4 +8,4 @@ const vars = {
   },
 };
 
-export { colors, vars };
+export { vars };

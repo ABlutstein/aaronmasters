@@ -1,7 +1,15 @@
 import React, { useState } from "react";
-import { StyleSheet, TextInput, Text, View } from "react-native";
+import {
+  StyleSheet,
+  TextInput,
+  Text,
+  View,
+  TouchableOpacity,
+  Image,
+} from "react-native";
+import colors from "../../config/colors";
 
-const SearchVideo = ({ onSearchVideo }) => {
+const SearchVideo = ({ onSearchVideo, containerStyle, onChangeText }) => {
   const [inputText, setInputText] = useState("");
 
   const searchVideoList = () => {
@@ -17,19 +25,33 @@ const SearchVideo = ({ onSearchVideo }) => {
     }
   };
 
+  const deleteButton = () => {
+    setInputText("");
+  };
+
   return (
     <View style={styles.header}>
-      <Text style={styles.apptitle}>History video search</Text>
-      <TextInput
-        style={styles.search}
-        clearButtonMode={"while-editing"}
-        placeholder="Search for history videos here..."
-        placeholderTextColor="silver"
-        returnKeyType="search"
-        value={inputText}
-        onSubmitEditing={searchVideoList}
-        onChangeText={(text) => resetVideoList(text)}
-      ></TextInput>
+      <View style={[styles.container, { ...containerStyle }]}>
+        <Text style={styles.appTitle}>History video search</Text>
+        <TextInput
+          onChangeText={onChangeText}
+          style={styles.searchBar}
+          value={inputText}
+          onSubmitEditing={searchVideoList}
+          onChangeText={(text) => resetVideoList(text)}
+          placeholder="Search for history videos here..."
+        />
+        {inputText ? (
+          <TouchableOpacity style={styles.clearIcon} onPress={deleteButton}>
+            <Image
+              style={styles.closeButton}
+              source={require("../../../assets/icons/childCross.png")}
+              style={styles.Icon}
+              resizeMode="contain"
+            />
+          </TouchableOpacity>
+        ) : null}
+      </View>
     </View>
   );
 };
@@ -37,7 +59,7 @@ const SearchVideo = ({ onSearchVideo }) => {
 const styles = StyleSheet.create({
   header: {
     width: "100%",
-    backgroundColor: "yellow",
+    backgroundColor: colors.primaryYellow,
     padding: 30,
     paddingTop: 10,
     zIndex: 200,
@@ -50,22 +72,39 @@ const styles = StyleSheet.create({
     shadowRadius: 5,
     elevation: 1,
   },
-  apptitle: {
+  appTitle: {
     fontSize: 30,
     textAlign: "center",
     paddingBottom: 10,
     fontWeight: "600",
-    color: "green",
+    color: colors.primaryGreen,
     fontFamily: "Babbit",
   },
-  search: {
+
+  searchBar: {
+    borderWidth: 0.9,
+    borderColor: colors.primaryGreen,
+    backgroundColor: colors.background,
     height: 40,
-    backgroundColor: "rgb(240, 240, 240)",
-    color: "red",
-    padding: 9,
+    borderRadius: 40,
+    paddingLeft: 15,
     fontSize: 20,
     fontFamily: "EnglishFont",
-    borderRadius: 30,
+    fontWeight: "bold",
+    color: colors.primaryGreen,
+  },
+  container: {
+    justifyContent: "center",
+  },
+  clearIcon: {
+    position: "absolute",
+    right: 10,
+    bottom: 10,
+  },
+  Icon: {
+    width: 20,
+    height: 20,
+    tintColor: colors.primaryGreen,
   },
 });
 

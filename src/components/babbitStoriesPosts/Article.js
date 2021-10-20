@@ -1,7 +1,8 @@
 import React from "react";
 import { ScrollView, View, Image, Text, StyleSheet } from "react-native";
 import { Author, ReadTime } from "./AuthorIndex";
-import { vars, colors } from "../../utils";
+import { vars } from "../../utils";
+import colors from "../../config/colors";
 
 function Article({
   route: {
@@ -43,7 +44,7 @@ const styles = StyleSheet.create({
 
   imageFrame: {
     padding: gap.s,
-    backgroundColor: colors.white,
+    backgroundColor: colors.background,
   },
 
   image: {
@@ -61,7 +62,7 @@ const styles = StyleSheet.create({
   contentFrame: {
     marginBottom: gap.m,
     paddingHorizontal: gap.m,
-    backgroundColor: colors.white,
+    backgroundColor: colors.background,
   },
 
   content: {
